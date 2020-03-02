@@ -1,8 +1,8 @@
 const env = {
 
-  database: 'urbanbackend',
+  database: 'rashid',
   username: 'root',
-  password: '',
+  password: 'MyNew',
   host: 'localhost',
   dialect: 'mysql',
   pool: {
@@ -12,5 +12,5 @@ const env = {
 	  idle: 10000
   }
 };
- 
+
 module.exports = env;

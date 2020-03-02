@@ -19,10 +19,16 @@ var bcrypt = require('bcryptjs');
 
  	User.create({
 
-		username: req.body.username,
- 		email: req.body.email,
- 		phone: req.body.phone,
- 		password: bcrypt.hashSync(req.body.password, 8)
+		FirstName: req.body.name,
+ 		LastName: req.body.lname,
+		 MobileNo: req.body.number,
+		 TelephoneNo: req.body.tel,
+		 Address: req.body.address,
+		 Mail: req.body.email,
+
+		 Password: bcrypt.hashSync(req.body.password, 8),
+		 ConfirmPassword: bcrypt.hashSync(req.body.cpassword, 8)
+
  	}).then(user => {
    Role.findAll({
  			where: {
