@@ -9,25 +9,20 @@ const foreign= db.foreign;
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 
-
-
-
-
  exports.signup = (req, res) => {
  	// Save User to Database
  	console.log("Processing func -> SignUp");
 
  	User.create({
 
-		FirstName: req.body.name,
- 		LastName: req.body.lname,
-		 MobileNo: req.body.number,
-		 TelephoneNo: req.body.tel,
-		 Address: req.body.address,
-		 Mail: req.body.email,
-
-		 Password: bcrypt.hashSync(req.body.password, 8),
-		 ConfirmPassword: bcrypt.hashSync(req.body.cpassword, 8)
+		name: req.body.name,
+ 		lname: req.body.lname,
+		 phone: req.body.number,
+		 tel: req.body.tel,
+		 address: req.body.address,
+		 email: req.body.email,
+		 password: bcrypt.hashSync(req.body.password, 8),
+		 cpassword: bcrypt.hashSync(req.body.cpassword, 8)
 
  	}).then(user => {
    Role.findAll({
