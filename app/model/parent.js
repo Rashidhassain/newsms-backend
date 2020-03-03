@@ -1,31 +1,35 @@
 module.exports = (sequelize, Sequelize) => {
-	const User = sequelize.define('users', {
-		name: {
+	const Parent = sequelize.define('Parents', {
+		fname: {
 			type: Sequelize.STRING
 		},
 		lname: {
 			type: Sequelize.STRING
 		},
-		phone: {
+		mobile: {
 			type: Sequelize.STRING
 		},
-		tel: {
+		stid: {
 			type: Sequelize.STRING
 		},
-		address: {
-			type: Sequelize.STRING
-		},
-	  email: {
+
+        tel: {
 		  type: Sequelize.STRING
-	  },
+      },
+      mail: {
+        type: Sequelize.STRING
+    },
 	 password: {
 		  type: Sequelize.STRING
 	  },
 
 	    cpassword: {
 		  type: Sequelize.STRING
-	  }
+      },
+      role:{
+        type: Sequelize.STRING
+    }
 	});
 
-	return User;
+	return Parent;
 }
