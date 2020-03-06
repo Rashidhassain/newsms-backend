@@ -77,13 +77,6 @@ email: req.body.email
 
 exports.TeacherList=(req,res)=>{
 	Teacher.findAll({
-		include: [{
-			model: Role,
-			attributes: ['id', 'name'],
-			through: {
-				attributes: ['userId', 'roleId'],
-			}
-		}]
 		}).then(teacher =>{
 			res.status(200).json({
 				teacher
@@ -95,10 +88,11 @@ exports.TeacherList=(req,res)=>{
 
 
 
+
 // parent
 
 
-exports.signup = (req, res) => {
+exports.signups = (req, res) => {
 	// Save User to Database
 	console.log("Processing func -> SignUp");
 
@@ -135,7 +129,7 @@ exports.signup = (req, res) => {
 
 
 
-exports.signin = (req, res) => {
+exports.signinn = (req, res) => {
 	console.log("Sign-In");
 
 	Parent.findOne({
@@ -161,7 +155,7 @@ email: req.body.email
 }
 
 
-
+/*
 exports.TeacherList=(req,res)=>{
 	Parent.findAll({
 		include: [{
@@ -178,4 +172,4 @@ exports.TeacherList=(req,res)=>{
 	}).catch(err => {
 		res.status(500).send("Error -> " + err);
 	});
-}
+} */

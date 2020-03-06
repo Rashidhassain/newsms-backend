@@ -6,6 +6,6 @@ module.exports = function(app) {
 	app.post('/api/auth/signup', [verifySignUp.checkDuplicateUserNameOrEmail], controller.signup);
 	app.post('/api/auth/signin', controller.signin);
 	app.get('/api/teacherList', controller.TeacherList);
-	app.get('/api/parentList', controller.ParentList);
+	// app.get('/api/parentList', controller.ParentList);
 
 }
