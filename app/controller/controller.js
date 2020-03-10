@@ -121,7 +121,7 @@ exports.signinn = (req, res) => {
 
 	Parent.findOne({
 		where: {
-email: req.body.email
+mail: req.body.email
 		}
 	}).then(user => {
 		if (!user) {
@@ -142,24 +142,22 @@ email: req.body.email
 }
 
 
-/*
-exports.TeacherList=(req,res)=>{
-	Parent.findAll({
-		include: [{
-			model: Role,
-			attributes: ['id', 'name'],
-			through: {
-				attributes: ['userId', 'roleId'],
-			}
-		}]
-		}).then(teacher =>{
+
+exports.ParentList=(req,res)=>{
+	Teacher.findAll({
+		}).then(parent =>{
 			res.status(200).json({
-				teacher
+				parent
 		})
 	}).catch(err => {
 		res.status(500).send("Error -> " + err);
 	});
-} */
+}
+
+
+
+
+
 
 
 // class Crud operation
