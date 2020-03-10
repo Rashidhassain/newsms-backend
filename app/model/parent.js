@@ -9,6 +9,9 @@ module.exports = (sequelize, Sequelize) => {
 		mobile: {
 			type: Sequelize.STRING
 		},
+		stdname: {
+			type: Sequelize.STRING
+		},
 		stid: {
 			type: Sequelize.STRING
 		},

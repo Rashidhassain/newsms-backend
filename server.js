@@ -15,7 +15,7 @@ const Role = db.role;
 // force: true will drop the table if it already exists
 db.sequelize.sync({force: false,alter:true}).then(() => {
   console.log('Drop and Resync with { force: true }');
-  initial();
+
 });
 
 //require('./app/route/project.route.js')(app);
@@ -28,21 +28,3 @@ var server = app.listen(8080, function () {
 
   console.log("App listening at http://%s:%s", host, port)
 })
-
-
-function initial(){
-	Role.create({
-		id: 1,
-		name: "TEACHER"
-	});
-
-	Role.create({
-		id: 2,
-		name: "ADMIN"
-	});
-
-	Role.create({
-		id: 3,
-		name: "PARENT"
-	});
-}

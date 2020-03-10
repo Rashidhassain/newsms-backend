@@ -2,6 +2,7 @@ const db = require('../config/db.config.js');
 const config = require('../config/config.js');
 const Teacher = db.teacher;
 const Parent = db.parent;
+const Handled = db.handled;
 
 const Role = db.role;
 
@@ -93,40 +94,26 @@ exports.TeacherList=(req,res)=>{
 
 
 exports.signups = (req, res) => {
-	// Save User to Database
-	console.log("Processing func -> SignUp");
-
 	Parent.create({
-
-		name: req.body.name,
+		fname: req.body.fname,
 		lname: req.body.lname,
-		phone: req.body.number,
+		mobile: req.body.mobile,
 		tel: req.body.tel,
+		stid: req.body.stid,
+		stdname: req.body.stname,
 		address: req.body.address,
-		email: req.body.email,
+		mail: req.body.mail,
 		password: bcrypt.hashSync(req.body.password, 8),
 		cpassword: bcrypt.hashSync(req.body.cpassword, 8),
-		role: req.body.role,
-
-
+		role: req.body.roles,
 	}).then(user => {
-
-
 				res.status(200).json({
 					user
 			});
 		}).catch(err => {
 			res.status(500).send("Error -> " + err);
 		});
-
 }
-
-
-
-
-
-
-
 
 
 exports.signinn = (req, res) => {
@@ -173,3 +160,93 @@ exports.TeacherList=(req,res)=>{
 		res.status(500).send("Error -> " + err);
 	});
 } */
+
+
+// class Crud operation
+exports.classadd = (req, res) => {
+	Handled.create({
+
+		class: req.body.cls,
+		subject: req.body.sub,
+		section: req.body.sec,
+		day: req.body.day,
+		date: req.body.date,
+	}).then(clas => {
+				res.status(200).json({
+					clas
+			});
+		}).catch(err => {
+			res.status(500).send("Error -> " + err);
+		});
+
+}
+
+
+exports.classfetch=(req,res)=>{
+	Handled.findAll({
+	}).then(product => {
+		res.status(200).json({
+			 product
+		});
+	}).catch(err => {
+		res.status(500).json({
+			"description": "Can not access Product Page",
+			"error": err
+		});
+	})
+}
+
+exports.classedit=(req,res)=>{
+	var id= req.params.id;
+	Handled.findOne({
+		where: { id:id }
+	}).then(product => {
+		res.status(200).json({
+			 product
+		});
+	}).catch(err => {
+		res.status(500).json({
+			"description": "Can not access Product Page",
+			"error": err
+		});
+	})
+}
+
+
+exports.classupdate=(req,res)=>{
+	var id= req.params.id;
+	Handled.update({
+		class: req.body.cls,
+		subject: req.body.sub,
+		section: req.body.sec,
+		day: req.body.day,
+		date: req.body.date},
+		{where: { id:id }
+	}).then(product => {
+		res.status(200).json({
+			 product
+		});
+	}).catch(err => {
+		res.status(500).json({
+			"description": "Can not access Product Page",
+			"error": err
+		});
+	})
+}
+exports.classdelete=(req,res)=>{
+	var id= req.params.id;
+	Handled.destroy({
+		where: { id:id },
+	}).then(product => {
+		res.status(200).json({
+			 product
+		});
+	}).catch(err => {
+		res.status(500).json({
+			"description": "Can not access Product Page",
+			"error": err
+		});
+	})
+}
+
+

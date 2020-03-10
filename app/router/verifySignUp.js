@@ -2,16 +2,33 @@ const db = require('../config/db.config.js');
 const config = require('../config/config.js');
 const ROLEs = config.ROLEs;
 const Teacher = db.teacher;
-const Role = db.role;
+const Parent = db.parent;
 
 checkDuplicateUserNameOrEmail = (req, res, next) => {
+		Teacher.findOne({
+			where: {
+				email: req.body.email
+			}
+		}).then(user => {
+			if(user){
+				res.status(400).send("Fail -> Email is already in use!");
+				return;
+			}
+
+			next();
+		});
+
+}
+
+
+parentcheck = (req, res, next) => {
 	// -> Check Username is already in use
 
 
 		// -> Check Email is already in use
-		Teacher.findOne({
+		Parent.findOne({
 			where: {
-				email: req.body.email
+				mail: req.body.mail
 			}
 		}).then(user => {
 			if(user){
@@ -36,6 +53,7 @@ checkRolesExisted = (req, res, next) => {
 
 const signUpVerify = {};
 signUpVerify.checkDuplicateUserNameOrEmail = checkDuplicateUserNameOrEmail;
+signUpVerify.parentcheck = parentcheck;
 signUpVerify.checkRolesExisted = checkRolesExisted;
 
 module.exports = signUpVerify;

@@ -12,11 +12,9 @@ module.exports = (sequelize, Sequelize) => {
 		day: {
 			type: Sequelize.STRING
 		},
-
-	  role:{
-		  type: Sequelize.STRING
-	  }
-
+		date: {
+			type: Sequelize.STRING
+		},
 	});
 
 	return Teacherhandled;
