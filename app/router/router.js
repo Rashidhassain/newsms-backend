@@ -23,11 +23,18 @@ module.exports = function(app) {
 	// app.get('/api/parentList', controller.ParentList);
 
 
-// class crud operation
+// handled crud operation
 	app.post('/class/add',controller.classadd);
 		app.get('/class/fetch', [authJwt.verifyToken], controller.classfetch);
 		app.delete('/class/delete/:id', [authJwt.verifyToken], controller.classdelete);
 		app.get('/class/edit/:id',  [authJwt.verifyToken],controller.classedit);
 		app.put('/class/update/:id', [authJwt.verifyToken], controller.classupdate);
 
+
+
+// student crud operation
+app.post('/clas1/add1',controller.clas1add1);
+
+
 }
+

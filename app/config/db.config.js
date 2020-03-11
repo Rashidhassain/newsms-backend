@@ -24,6 +24,7 @@ db.sequelize = sequelize;
 db.teacher = require('../model/teacher.js')(sequelize, Sequelize);
 db.role = require('../model/role.model.js')(sequelize, Sequelize);
 db.handled = require('../model/teacherhandled.js')(sequelize, Sequelize);
+db.student = require('../model/teacherstudent.js')(sequelize, Sequelize);
 
 db.parent = require('../model/parent.js')(sequelize, Sequelize);
 module.exports = db;

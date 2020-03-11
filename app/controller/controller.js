@@ -3,6 +3,7 @@ const config = require('../config/config.js');
 const Teacher = db.teacher;
 const Parent = db.parent;
 const Handled = db.handled;
+const Student = db.Student;
 
 const Role = db.role;
 
@@ -246,5 +247,33 @@ exports.classdelete=(req,res)=>{
 		});
 	})
 }
+/* student crud operation */
+
+exports.clas1add1 = (req, res) => {
+	Student.create({
+
+		studentid: req.body.stid,
+		studentname: req.body.stname,
+		FatherName: req.body.ftname,
+		MotherName: req.body.mtname,
+		ClassName: req.body.clsname,
+		Gender: req.body.gender,
+		PhoneNumber: req.body.pnum,
+		FatherMail: req.body.ftmail,
+		MotherMail: req.body.mtmail,
+		Section: req.body.section,
+		Address: req.body.address,
+		Date: req.body.date,
+
+	}).then(clas => {
+				res.status(200).json({
+					clas
+			});
+		}).catch(err => {
+			res.status(500).send("Error -> " + err);
+		});
+
+}
 
 
+/* student crud operation ends */

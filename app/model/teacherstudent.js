@@ -1,15 +1,36 @@
 module.exports = (sequelize, Sequelize) => {
 	const Teacherstudent = sequelize.define('teacherstudents', {
-		class: {
+		studentid: {
 			type: Sequelize.STRING
 		},
-		subject: {
+		studentname: {
+			type: Sequelize.STRING
+		},
+		fathername: {
+			type: Sequelize.STRING
+		},
+		mothername: {
+			type: Sequelize.STRING
+		},
+		classname: {
+			type: Sequelize.STRING
+		},
+		gender: {
+			type: Sequelize.STRING
+		},
+		phonenumber: {
+			type: Sequelize.STRING
+		},
+		fathermail: {
+			type: Sequelize.STRING
+		},
+		mothermail: {
 			type: Sequelize.STRING
 		},
 		section: {
 			type: Sequelize.STRING
 		},
-		day: {
+		address: {
 			type: Sequelize.STRING
 		},
 		date: {
