@@ -3,7 +3,7 @@ const config = require('../config/config.js');
 const Teacher = db.teacher;
 const Parent = db.parent;
 const Handled = db.handled;
-const Student = db.Student;
+const Student = db.student;
 
 const Role = db.role;
 
@@ -247,33 +247,121 @@ exports.classdelete=(req,res)=>{
 		});
 	})
 }
+
+
+
+
+
+
+
+
 /* student crud operation */
 
+//  create
 exports.clas1add1 = (req, res) => {
 	Student.create({
 
 		studentid: req.body.stid,
 		studentname: req.body.stname,
-		FatherName: req.body.ftname,
-		MotherName: req.body.mtname,
-		ClassName: req.body.clsname,
-		Gender: req.body.gender,
-		PhoneNumber: req.body.pnum,
-		FatherMail: req.body.ftmail,
-		MotherMail: req.body.mtmail,
-		Section: req.body.section,
-		Address: req.body.address,
-		Date: req.body.date,
+		fathername: req.body.ftname,
+		mothername: req.body.mtname,
+		classname: req.body.clsname,
+		gender: req.body.gender,
+		phonenumber: req.body.pnum,
+		fathermail: req.body.ftmail,
+		mothermail: req.body.mtmail,
+		section: req.body.section,
+		address: req.body.address,
+		date: req.body.date,
 
-	}).then(clas => {
+	}).then(clas1 => {
 				res.status(200).json({
-					clas
+					clas1
 			});
 		}).catch(err => {
 			res.status(500).send("Error -> " + err);
 		});
 
 }
+// create ends
+
+// fetch
+exports.clasfetch1=(req,res)=>{
+	Student.findAll({
+	}).then(product => {
+		res.status(200).json({
+			 product
+		});
+	}).catch(err => {
+		res.status(500).json({
+			"description": "Can not access Product Page",
+			"error": err
+		});
+	})
+}
+
+// fetch ends
+
+//  delete
+exports.clasdelete=(req,res)=>{
+	var id= req.params.id;
+	Student.destroy({
+		where: { id:id },
+	}).then(product => {
+		res.status(200).json({
+			 product
+		});
+	}).catch(err => {
+		res.status(500).json({
+			"description": "Can not access Product Page",
+			"error": err
+		});
+	})
+}
+// delete ends
 
 
+/* exports.clasupdate=(req,res)=>{
+	var id= req.params.id;
+	Student.update({
+		studentid: req.body.stid,
+		studentname: req.body.stname,
+		fathername: req.body.ftname,
+		mothername: req.body.mtname,
+		classname: req.body.clsname,
+		gender: req.body.gender,
+		phonenumber: req.body.pnum,
+		fathermail: req.body.ftmail,
+		mothermail: req.body.mtmail,
+		section: req.body.section,
+		address: req.body.address,
+		date: req.body.date,
+	}).then(product => {
+		res.status(200).json({
+			 product
+		});
+	}).catch(err => {
+		res.status(500).json({
+			"description": "Can not access Product Page",
+			"error": err
+		});
+	})
+}
+ */
+
+// exports.clasedit=(req,res)=>{
+// 	var id= req.params.id;
+// 	Student.findOne({
+// 		where: { id:id }
+// 	}).then(product => {
+// 		res.status(200).json({
+// 			 product
+// 		});
+// 	}).catch(err => {
+// 		res.status(500).json({
+// 			"description": "Can not access Product Page",
+// 			"error": err
+// 		});
+// 	})
+// }
 /* student crud operation ends */
