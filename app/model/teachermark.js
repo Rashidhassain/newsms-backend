@@ -16,7 +16,9 @@ module.exports = (sequelize, Sequelize) => {
 		section: {
 			type: Sequelize.STRING
 		},
-
+		marks: {
+			type: Sequelize.STRING
+		},
 	});
 
 	return Teachermark;

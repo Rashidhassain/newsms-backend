@@ -232,6 +232,8 @@ exports.classupdate=(req,res)=>{
 		});
 	})
 }
+
+
 exports.classdelete=(req,res)=>{
 	var id= req.params.id;
 	Handled.destroy({
@@ -320,8 +322,7 @@ exports.clasdelete=(req,res)=>{
 }
 // delete ends
 
-
-/* exports.clasupdate=(req,res)=>{
+exports.clasupdate1=(req,res)=>{
 	var id= req.params.id;
 	Student.update({
 		studentid: req.body.stid,
@@ -335,7 +336,8 @@ exports.clasdelete=(req,res)=>{
 		mothermail: req.body.mtmail,
 		section: req.body.section,
 		address: req.body.address,
-		date: req.body.date,
+		date: req.body.date},
+		{where:{id:id}
 	}).then(product => {
 		res.status(200).json({
 			 product
@@ -347,21 +349,22 @@ exports.clasdelete=(req,res)=>{
 		});
 	})
 }
- */
 
-// exports.clasedit=(req,res)=>{
-// 	var id= req.params.id;
-// 	Student.findOne({
-// 		where: { id:id }
-// 	}).then(product => {
-// 		res.status(200).json({
-// 			 product
-// 		});
-// 	}).catch(err => {
-// 		res.status(500).json({
-// 			"description": "Can not access Product Page",
-// 			"error": err
-// 		});
-// 	})
-// }
-/* student crud operation ends */
+
+
+ exports.clasedit1=(req,res)=>{
+ 	var id= req.params.id;
+ 	Student.findOne({
+ 		where: { id:id }
+ 	}).then(product => {
+		res.status(200).json({
+ 			 product
+		});
+ 	}).catch(err => {
+	res.status(500).json({
+			"description": "Can not access Product Page",
+			"error": err
+ 		});
+	})
+}
+// /* student crud operation ends

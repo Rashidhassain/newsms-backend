@@ -36,8 +36,8 @@ module.exports = function(app) {
 app.post('/clas1/add1',controller.clas1add1);
 app.get('/clas/fetch1', controller.clasfetch1);
 app.delete('/clas/delete/:id', [authJwt.verifyToken], controller.clasdelete);
-// app.put('/clas/update/:id', [authJwt.verifyToken], controller.clasupdate);
-// app.get('/clas/edit/:id',  [authJwt.verifyToken],controller.clasedit);
+app.put('/clas/update1/:id', [authJwt.verifyToken], controller.clasupdate1);
+app.get('/clas/edit/:id',  [authJwt.verifyToken],controller.clasedit1);
 // student crud operation ends
 
 
